@@ -1,19 +1,17 @@
-var DnaTranscriber = function() {};
+const DnaTranscriber = function() {};
 
 DnaTranscriber.prototype.toRna = function(dnaString) {
+    const dnaArray = dnaString.split('');
     let rnaString = "";
-    let i = 0;
-    let j = dnaString.length;
+    
     if(dnaString.length < 1){
         throw new Error("Invalid DNA string.");
     } else {
-        for(; i < j; i++){
-            rnaString += getCode(dnaString[i]);
-        }
+        return dnaArray.map(getCode).join('');
     }
-    return rnaString;
 }
-var getCode = function(key){
+
+const getCode = function(key){
     switch (key) {
         case 'G':
             return 'C'
@@ -23,7 +21,6 @@ var getCode = function(key){
             return 'A';
         case 'A':
             return 'U';
-
     }
 }
 
